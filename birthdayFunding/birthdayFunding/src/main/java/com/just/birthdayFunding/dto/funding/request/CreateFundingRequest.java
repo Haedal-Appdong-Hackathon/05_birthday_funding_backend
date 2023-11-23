@@ -1,6 +1,7 @@
 package com.just.birthdayFunding.dto.funding.request;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -11,8 +12,7 @@ import java.util.List;
 
 @Getter
 public class CreateFundingRequest {
-    @NotNull(message = "제목은 null이 될 수 없습니다.")
-    @NotEmpty(message = "제목은 빈 문자열이 될 수 없습니다.")
+    @NotBlank(message = "제목은 빈 문자열이 될 수 없습니다.")
     private String title;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
@@ -21,8 +21,7 @@ public class CreateFundingRequest {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate endDate;
 
-    @NotNull(message = "내용은 null이 될 수 없습니다.")
-    @NotEmpty(message = "내용은 빈 문자열이 될 수 없습니다.")
+    @NotBlank(message = "내용은 빈 문자열이 될 수 없습니다.")
     private String content;
 
     @NotNull(message = "희망 기프리콘 리스트는 null이 될 수 없습니다.")
