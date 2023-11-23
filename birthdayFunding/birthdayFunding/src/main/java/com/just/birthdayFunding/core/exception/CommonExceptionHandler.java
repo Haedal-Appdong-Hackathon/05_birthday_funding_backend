@@ -26,7 +26,7 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
 public class CommonExceptionHandler {
     private final GetCallingClass getCallingClass;
 
-    @ExceptionHandler(value = ResponseStatusException.class)
+    @ExceptionHandler
     public ResponseEntity<ErrorResponse> ResponseStatusExceptionHandler(ResponseStatusException e){
         log.error("Exception occurred in: {}", getCallingClass.call(e));
         log.error("ResponseStatusException : {}", e.getMessage());
@@ -37,11 +37,6 @@ public class CommonExceptionHandler {
         log.error("Exception occurred in: {}", getCallingClass.call(e));
         log.error("IllegalArgumentException : {}", e.getMessage());
         return new ResponseEntity<>(new ErrorResponse("IllegalArgumentException", e.getMessage()), BAD_REQUEST);
-    }
-
-    @ExceptionHandler
-    public ResponseEntity<ErrorResponse> responseStatusExceptionHandler(ResponseStatusException e){
-        return new ResponseEntity<>(new ErrorResponse(e.getMessage(), e.getReason()), e.getStatusCode());
     }
 
     @ExceptionHandler
