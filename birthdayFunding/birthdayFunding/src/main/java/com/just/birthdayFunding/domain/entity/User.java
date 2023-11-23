@@ -32,8 +32,8 @@ public class User {
     @Column(name = "point", nullable = false)
     private Integer point;
 
-    @Column(name = "image_id")
-    private UserImage userImage;
+    @Column(name = "image_path")
+    private String ImagePath;
 
     @Column(name = "created_date")
     private LocalDate createdDate;
