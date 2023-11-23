@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 @Getter
 @Builder
-public class UserFriendDto {
+public class UserSummaryDto {
     private Long id;
     private LocalDate birthday;
     private String nickname;

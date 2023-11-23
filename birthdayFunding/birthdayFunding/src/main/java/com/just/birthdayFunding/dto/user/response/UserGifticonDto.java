@@ -3,7 +3,7 @@ package com.just.birthdayFunding.dto.user.response;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @Builder
@@ -13,6 +13,6 @@ public class UserGifticonDto {
     private Long price;
     private String imgUrl;
     private String brand;
-    private LocalDateTime dateOfUse;
-    private LocalDateTime expirationDate;
+    private LocalDate dateOfUse;
+    private LocalDate expirationDate;
 }
