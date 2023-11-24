@@ -4,6 +4,7 @@ import com.just.birthdayFunding.core.anotation.TokenUserId;
 import com.just.birthdayFunding.dto.common.response.PagingResponse;
 import com.just.birthdayFunding.dto.funding.request.CloseFundingRequest;
 import com.just.birthdayFunding.dto.funding.request.CreateFundingRequest;
+import com.just.birthdayFunding.dto.funding.request.JoinFundingRequest;
 import com.just.birthdayFunding.dto.funding.request.UpdateFundingRequest;
 import com.just.birthdayFunding.dto.funding.response.CloseFundingResponse;
 import com.just.birthdayFunding.dto.funding.response.FundingSummaryDto;
@@ -34,8 +35,8 @@ public class FundingController {
     }
 
     @PostMapping("/{fid}/join")
-    public void joinFunding(@PathVariable Long fid, @TokenUserId Long userId) {
-        fundingService.joinFunding(fid, userId);
+    public void joinFunding(@PathVariable Long fid, @Valid @RequestBody JoinFundingRequest dto, @TokenUserId Long userId) {
+        fundingService.joinFunding(fid, dto, userId);
     }
 
     @PostMapping("/{fid}/close")

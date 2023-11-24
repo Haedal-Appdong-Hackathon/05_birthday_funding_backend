@@ -58,4 +58,16 @@ public class FundingArticle extends BaseTimeEntity {
         this.articleGifticonList.forEach(articleGifticon -> articleGifticon.setFundingArticle(this));
     }
 
+    public void update(String title, String content, LocalDate startDate, LocalDate finishDate, List<ArticleGifticon> articleGifticonList){
+        this.title = title;
+        this.content = content;
+        this.startDate = startDate;
+        this.finishDate = finishDate;
+        this.articleGifticonList = articleGifticonList;
+    }
+
+    public void addFundingParticipant(FundingParticipant fundingParticipant){
+        this.fundingParticipantList.add(fundingParticipant);
+    }
+
 }
