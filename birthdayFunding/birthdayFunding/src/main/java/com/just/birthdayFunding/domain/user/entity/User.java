@@ -1,5 +1,6 @@
 package com.just.birthdayFunding.domain.user.entity;
 
+import com.just.birthdayFunding.domain.common.BaseTimeEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -17,7 +18,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @Table(name = "user")
-public class User {
+public class User extends BaseTimeEntity {
 
     @Id
     private Long id;
@@ -25,7 +26,7 @@ public class User {
     @Column(name = "birthdate")
     private LocalDate birthdate;
 
-    @Column(name = "nickname", nullable = false, unique = true)
+    @Column(name = "nickname", nullable = false)
     private String nickname;
 
     @Column(name = "point", nullable = false)
@@ -34,8 +35,7 @@ public class User {
     @Column(name = "image_path")
     private String imagePath;
 
-    @Column(name = "created_date")
-    private LocalDate createdDate;
+
 
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
@@ -47,7 +47,6 @@ public class User {
         this.nickname = nickname;
         this.point = 0;
         this.imagePath = imagePath;
-        this.createdDate = LocalDate.now();
         this.role = Role.ROLE_USER;
     }
 
