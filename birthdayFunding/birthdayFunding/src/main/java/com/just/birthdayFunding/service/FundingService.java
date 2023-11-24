@@ -38,7 +38,7 @@ public class FundingService {
     private final GifticonRepository gifticonRepository;
     private final ArticleGifticonRepostiory articleGifticonRepostiory;
     private final FriendshipRepository friendshipRepository;
-    private final UserGifticonRepositroy userGifticonRepositroy;
+    private final FundingParticipantRepository fundingParticipantRepository;
 
     @Transactional
     public PagingResponse<FundingSummaryDto> getFundingList(int page,Long userId) {
@@ -127,7 +127,7 @@ public class FundingService {
         if(artcle.getFundingParticipantList().contains(funder)){
             FundingParticipant fundingParticipant = artcle.getFundingParticipantList().stream().filter(fundingParticipant1 -> fundingParticipant1.getUser().getId().equals(userId)).findFirst().orElseThrow();
             fundingParticipant.addGifticonList(gifticonList);
-
+            fundingParticipantRepository.save(fundingParticipant);
 
         }else{
             FundingParticipant fundingParticipant = FundingParticipant.builder()
@@ -135,8 +135,9 @@ public class FundingService {
                     .user(funder)
                     .gifticonList(gifticonList)
                     .build();
+            artcle.addFundingParticipant(fundingParticipant);
+            fundingParticipantRepository.save(fundingParticipant);
         }
-
 
     }
     @Transactional
@@ -158,10 +159,9 @@ public class FundingService {
         FundingArticle fundingArticle = fundingArticleRepostiory.findById(fid).orElseThrow(
                 () -> new IllegalArgumentException("존재하지 않는 펀딩입니다.")
         );
-        List<GifticonDto> wishList = fundingArticle.getArticleGifticonList().stream().map(articleGifticon -> {
-            Gifticon gifticon = articleGifticon.getGifticon();
-            return GifticonDto.fromEntity(gifticon);
-        }).toList();
+        List<Gifticon> wishList = fundingArticle.getArticleGifticonList().stream().map(
+                ArticleGifticon::getGifticon
+        ).toList();
 
         return FundingDetailResponse.fromEntity(fundingArticle, user, wishList);
     }
