@@ -4,6 +4,7 @@ import com.just.birthdayFunding.domain.gifticon.GifticonCategory;
 import com.just.birthdayFunding.domain.gifticon.GifticonRepository;
 import com.just.birthdayFunding.domain.gifticon.Gifticon;
 import com.just.birthdayFunding.domain.user.UserGifticon;
+import com.just.birthdayFunding.domain.user.UserGifticonRepositroy;
 import com.just.birthdayFunding.domain.user.UserRepository;
 import com.just.birthdayFunding.domain.user.User;
 import com.just.birthdayFunding.dto.common.response.PagingResponse;
@@ -21,6 +22,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ShopService {
     private final GifticonRepository gifticonRepository;
+    private final UserGifticonRepositroy userGifticonRepositroy;
     private final UserRepository userRepository;
     @Transactional
     public PagingResponse<GifticonDto> getGifticonList(int page, GifticonCategory category) {
@@ -40,6 +42,8 @@ public class ShopService {
                 .user(user)
                 .gifticon(gifticon)
                 .build();
+        userGifticonRepositroy.save(userGifticon);
+
         return BuyGifticonResponse.builder().id(userGifticon.getId())
                 .name(gifticon.getName())
                 .brand(gifticon.getBrand())
