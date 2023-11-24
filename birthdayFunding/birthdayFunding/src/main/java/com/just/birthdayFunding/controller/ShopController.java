@@ -16,11 +16,11 @@ public class ShopController {
 
     @GetMapping
     public PagingResponse<GifticonDto> getGifticonList(@RequestParam int page, @RequestParam String category) {
-        return null;
+        return shopService.getGifticonList(page, category);
     }
 
     @PostMapping("/{gid}/buy")
     public BuyGifticonResponse buyGifticon(@PathVariable Long gid, @TokenUserId Long userId) {
-        return null;
+        return shopService.buyGifticon(gid, userId);
     }
 }

@@ -1,13 +1,11 @@
 package com.just.birthdayFunding.domain.user.entity;
 
 import com.just.birthdayFunding.domain.common.BaseTimeEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +19,7 @@ import lombok.Setter;
 public class User extends BaseTimeEntity {
 
     @Id
+    @Column(name = "user_id")
     private Long id;
 
     @Column(name = "birthdate")
@@ -38,6 +37,9 @@ public class User extends BaseTimeEntity {
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<UserGifticon> userGifticonList = new ArrayList<>();
 
     public User(Long id, String nickname, String imagePath) {
         this.id = id;
