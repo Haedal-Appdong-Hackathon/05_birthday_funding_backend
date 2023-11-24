@@ -4,9 +4,7 @@ import com.just.birthdayFunding.domain.common.BaseTimeEntity;
 import com.just.birthdayFunding.domain.gifticon.Gifticon;
 import com.just.birthdayFunding.domain.user.User;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +12,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "funding_participant")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class FundingParticipant extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

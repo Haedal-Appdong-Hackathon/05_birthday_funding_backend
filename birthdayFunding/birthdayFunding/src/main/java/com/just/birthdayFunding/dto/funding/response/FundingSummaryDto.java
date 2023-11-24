@@ -26,14 +26,16 @@ public class FundingSummaryDto {
         int current = article.getFundingParticipantList().stream().mapToInt(e->{
             return e.getGifticonList().stream().mapToInt(Gifticon::getPrice).sum();
         }).sum();
-        Double progress = (double)current/hope;
+
+        Double progress = (double)current/hope * 100;
+        Double roundedValue = Math.round(progress * 100.0) / 100.0;
         UserSummaryDto writer = UserSummaryDto.fromEntity(user);
         return FundingSummaryDto.builder()
                 .id(article.getId())
                 .title(article.getTitle())
                 .startDate(article.getStartDate())
                 .endDate(article.getFinishDate())
-                .progress(progress)
+                .progress(roundedValue)
                 .writer(writer)
                 .build();
     }

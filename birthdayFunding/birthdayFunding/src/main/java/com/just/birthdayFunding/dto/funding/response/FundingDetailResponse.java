@@ -26,24 +26,26 @@ public class FundingDetailResponse {
     private Integer currentMoney;
     private List<GifticonDto> wishList;
 
-    public static FundingDetailResponse fromEntity(FundingArticle article, User writer, List<GifticonDto> wishList) {
+    public static FundingDetailResponse fromEntity(FundingArticle article, User writer, List<Gifticon> wishList) {
         UserSummaryDto userSummaryDto = UserSummaryDto.fromEntity(writer);
         int hope = article.getArticleGifticonList()
                 .stream().mapToInt(articleGifticon -> articleGifticon.getGifticon().getPrice()).sum();
         int current = article.getFundingParticipantList().stream().mapToInt(e->{
             return e.getGifticonList().stream().mapToInt(Gifticon::getPrice).sum();
         }).sum();
-        Double progress = (double)current/hope;
+
+        Double progress = (double)current/hope * 100;
+        Double roundedValue = Math.round(progress * 100.0) / 100.0;
         return FundingDetailResponse.builder()
                 .id(article.getId())
                 .title(article.getTitle())
                 .startDate(article.getStartDate())
                 .endDate(article.getFinishDate())
-                .progress(progress)
+                .progress(roundedValue)
                 .writer(userSummaryDto)
                 .content(article.getContent())
                 .currentMoney(current)
-                .wishList(wishList)
+                .wishList(wishList.stream().map(GifticonDto::fromEntity).toList())
                 .build();
     }
 }
