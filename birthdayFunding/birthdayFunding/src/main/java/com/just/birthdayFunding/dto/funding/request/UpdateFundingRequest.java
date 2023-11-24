@@ -6,11 +6,13 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @Getter
+@NoArgsConstructor
 public class UpdateFundingRequest {
     @NotBlank(message = "제목은 빈 문자열이 될 수 없습니다.")
     private String title;
