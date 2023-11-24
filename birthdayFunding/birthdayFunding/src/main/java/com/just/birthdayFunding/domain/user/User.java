@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,6 +22,10 @@ public class User extends BaseTimeEntity {
     @Id
     @Column(name = "user_id")
     private Long id;
+
+    private String email;
+
+    private String name;
 
     @Column(name = "birthdate")
     private LocalDate birthdate;
@@ -41,13 +46,17 @@ public class User extends BaseTimeEntity {
     @OneToMany(mappedBy = "user",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<UserGifticon> userGifticonList = new ArrayList<>();
 
-    public User(Long id, String nickname, String imagePath) {
+    @Builder
+    public User(Long id, String nickname, String imagePath, String email) {
         this.id = id;
-        this.birthdate = null;
+        this.email=email;
         this.nickname = nickname;
-        this.point = 0;
         this.imagePath = imagePath;
+
         this.role = Role.ROLE_USER;
+        this.name=null;
+        this.birthdate = null;
+        this.point = 0;
     }
 
 }
