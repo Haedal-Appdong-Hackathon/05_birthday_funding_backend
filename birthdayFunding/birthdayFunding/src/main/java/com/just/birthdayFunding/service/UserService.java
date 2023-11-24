@@ -9,6 +9,7 @@ import com.just.birthdayFunding.domain.user.UserGifticonRepositroy;
 import com.just.birthdayFunding.domain.user.UserRepository;
 import com.just.birthdayFunding.dto.common.response.PagingResponse;
 import com.just.birthdayFunding.dto.shop.response.GifticonDto;
+import com.just.birthdayFunding.dto.user.request.ChargePointRequest;
 import com.just.birthdayFunding.dto.user.response.UserGifticonDto;
 import com.just.birthdayFunding.dto.user.response.UserInfoResponse;
 import com.just.birthdayFunding.dto.user.response.UserSummaryDto;
@@ -47,6 +48,14 @@ public class UserService {
                 userGifticonPage.stream()
                         .map(UserGifticonDto::from)
                         .collect(Collectors.toList()));
+    }
+
+    public Integer chargePoint(ChargePointRequest dto, Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 유저입니다."));
+        user.setPoint(user.getPoint() + dto.getPoint());
+        userRepository.save(user);
+        return user.getPoint();
     }
 
 //    public UserGifticonDto getUserGifticon() {

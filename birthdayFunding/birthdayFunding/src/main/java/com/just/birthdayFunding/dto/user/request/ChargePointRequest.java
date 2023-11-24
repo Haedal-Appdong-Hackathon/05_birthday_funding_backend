@@ -9,5 +9,5 @@ import lombok.Getter;
 public class ChargePointRequest {
     @NotNull(message = "충전 포인트는 null이 될 수 없습니다.")
     @Positive(message = "충전 포인트는 0보다 커야 합니다.")
-    private Long point;
+    private Integer point;
 }

@@ -2,20 +2,14 @@ package com.just.birthdayFunding.controller;
 
 import com.just.birthdayFunding.core.anotation.TokenUserId;
 import com.just.birthdayFunding.dto.common.response.PagingResponse;
+import com.just.birthdayFunding.dto.user.request.ChargePointRequest;
 import com.just.birthdayFunding.dto.user.response.UserGifticonDto;
 import com.just.birthdayFunding.dto.user.response.UserInfoResponse;
 import com.just.birthdayFunding.dto.user.response.UserSummaryDto;
 import com.just.birthdayFunding.service.UserService;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -36,6 +30,11 @@ public class UserController {
     @GetMapping("/gifticon")
     public PagingResponse<UserGifticonDto> getUserGifticons(@RequestParam int page, @TokenUserId Long userId) {
         return userService.getUserGifticons(userId, page);
+    }
+
+    @PostMapping("/point")
+    public Integer chargePoint(@RequestBody ChargePointRequest dto, @TokenUserId Long userId) {
+        return userService.chargePoint(dto, userId);
     }
 
 //    @GetMapping("/gifticon/{gid}")
