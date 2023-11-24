@@ -29,7 +29,7 @@ public class Gifticon {
     @Enumerated(EnumType.STRING)
     private GifticonCategory category;
 
-    @Column(nullable = false)
+    @Column(name = "image_url", nullable = false)
     private String imageUrl;
 
     @Builder
