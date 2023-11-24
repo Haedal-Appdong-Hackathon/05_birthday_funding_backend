@@ -2,11 +2,13 @@ package com.just.birthdayFunding.controller;
 
 import com.just.birthdayFunding.core.anotation.TokenUserId;
 import com.just.birthdayFunding.dto.common.response.PagingResponse;
+import com.just.birthdayFunding.dto.user.request.ChargePointByGifticonRequest;
 import com.just.birthdayFunding.dto.user.request.ChargePointRequest;
 import com.just.birthdayFunding.dto.user.response.UserGifticonDto;
 import com.just.birthdayFunding.dto.user.response.UserInfoResponse;
 import com.just.birthdayFunding.dto.user.response.UserSummaryDto;
 import com.just.birthdayFunding.service.UserService;
+import jakarta.validation.Valid;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -33,8 +35,13 @@ public class UserController {
     }
 
     @PostMapping("/point")
-    public Integer chargePoint(@RequestBody ChargePointRequest dto, @TokenUserId Long userId) {
+    public Integer chargePoint(@RequestBody @Valid ChargePointRequest dto, @TokenUserId Long userId) {
         return userService.chargePoint(dto, userId);
+    }
+
+    @PostMapping("point/gifticon")
+    public Integer chargePointByGifticon(@RequestBody @Valid ChargePointByGifticonRequest dto, @TokenUserId Long userId) {
+        return userService.chargePointByGifticon(dto, userId);
     }
 
 //    @GetMapping("/gifticon/{gid}")

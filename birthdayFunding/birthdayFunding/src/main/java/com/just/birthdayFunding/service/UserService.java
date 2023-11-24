@@ -9,10 +9,13 @@ import com.just.birthdayFunding.domain.user.UserGifticonRepositroy;
 import com.just.birthdayFunding.domain.user.UserRepository;
 import com.just.birthdayFunding.dto.common.response.PagingResponse;
 import com.just.birthdayFunding.dto.shop.response.GifticonDto;
+import com.just.birthdayFunding.dto.user.request.ChargePointByGifticonRequest;
 import com.just.birthdayFunding.dto.user.request.ChargePointRequest;
 import com.just.birthdayFunding.dto.user.response.UserGifticonDto;
 import com.just.birthdayFunding.dto.user.response.UserInfoResponse;
 import com.just.birthdayFunding.dto.user.response.UserSummaryDto;
+
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
@@ -54,6 +57,20 @@ public class UserService {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 유저입니다."));
         user.setPoint(user.getPoint() + dto.getPoint());
+        userRepository.save(user);
+        return user.getPoint();
+    }
+
+    public Integer chargePointByGifticon(ChargePointByGifticonRequest dto, Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 유저입니다."));
+        List<Long> userGifticonIds = dto.getGifticonIdList();
+
+        List<UserGifticon> userGifticons = userGifticonRepository.findByUserId(userId).stream().filter(
+                userGifticon -> userGifticonIds.contains(userGifticon.getGifticon().getId())
+        ).toList();
+
+        user.removeUserGifticons(userGifticons);
         userRepository.save(user);
         return user.getPoint();
     }

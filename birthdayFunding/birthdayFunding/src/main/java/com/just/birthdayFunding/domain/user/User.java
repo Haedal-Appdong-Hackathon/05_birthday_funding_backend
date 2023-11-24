@@ -59,4 +59,9 @@ public class User extends BaseTimeEntity {
         this.point = 0;
     }
 
+    public void removeUserGifticons(List<UserGifticon> userGifticonList) {
+        this.userGifticonList.removeAll(userGifticonList);
+        this.point += userGifticonList.stream().mapToInt(e -> e.getGifticon().getPrice()).sum();
+    }
+
 }
