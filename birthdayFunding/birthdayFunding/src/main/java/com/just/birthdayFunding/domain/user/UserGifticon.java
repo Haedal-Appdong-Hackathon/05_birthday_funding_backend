@@ -1,6 +1,8 @@
 package com.just.birthdayFunding.domain.user;
 
+import com.just.birthdayFunding.domain.gifticon.Gifticon;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -19,14 +21,25 @@ public class UserGifticon {
     @JoinColumn(name="user_id")
     private User user;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "gifticon_id")
+    private Gifticon gifticon;
+
     @Column(name = "expiration_date")
     private LocalDate expirationDate;
 
     @Column(name = "used_date")
     private LocalDate usedDate;
 
-    public void setGifticonOwner(User user){
+    @Builder
+    public UserGifticon(User user){
         this.user = user;
+        this.expirationDate = LocalDate.now().plusYears(1);
+    }
+
+    public void buy(User user, Gifticon gifticon){
+        this.user = user;
+        this.gifticon = gifticon;
         user.getUserGifticonList().add(this);
     }
 }

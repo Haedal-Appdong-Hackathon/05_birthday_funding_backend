@@ -19,7 +19,7 @@ public class ArticleGifticon {
     @JoinColumn(name = "funding_article_id")
     private FundingArticle fundingArticle;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "gifticon_id")
     private Gifticon gifticon;
 
