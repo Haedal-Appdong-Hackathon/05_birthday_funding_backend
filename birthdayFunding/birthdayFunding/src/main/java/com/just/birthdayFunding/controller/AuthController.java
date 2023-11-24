@@ -37,7 +37,12 @@ public class AuthController {
             // 만일, DB에 해당 email을 가지는 유저가 없으면 회원가입 시키고 유저 식별자와 JWT 반환
             // 현재 카카오 유저의 전화번호를 받아올 권한이 없어서 테스트를 하지 못함.
             if (user == null) {
-                userRepository.save(new User(id, userInfo.get("nickname"), userInfo.get("imagePath")));
+                userRepository.save(User.builder()
+                                .id(id)
+                                .email(user.getEmail())
+                                .imagePath(userInfo.get("imagePath"))
+                                .nickname(userInfo.get("nickname"))
+                        .build());
             }
             return new ResponseEntity<>(loginResponse, HttpStatus.OK);
         } catch (Exception e) {
