@@ -32,8 +32,9 @@ public class UserGifticon {
     private LocalDate usedDate;
 
     @Builder
-    public UserGifticon(User user){
+    public UserGifticon(User user,Gifticon gifticon){
         this.user = user;
+        this.gifticon = gifticon;
         this.expirationDate = LocalDate.now().plusYears(1);
     }
 

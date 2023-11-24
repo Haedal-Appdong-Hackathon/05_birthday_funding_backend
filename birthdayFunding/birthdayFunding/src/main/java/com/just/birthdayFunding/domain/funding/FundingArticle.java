@@ -31,11 +31,11 @@ public class FundingArticle extends BaseTimeEntity {
     private LocalDate finishDate;
 
 
-    @OneToMany(mappedBy = "funding_article",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "fundingArticle",fetch = FetchType.LAZY)
     private List<ArticleGifticon> articleGifticonList = new ArrayList<>();
 
 
-    @OneToMany(mappedBy = "funding_article",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "fundingArticle",fetch = FetchType.LAZY)
     private List<FundingParticipant> fundingParticipantList = new ArrayList<>();
 
 }
