@@ -1,7 +1,7 @@
 package com.just.birthdayFunding.controller;
 
-import com.just.birthdayFunding.domain.gifticon.dao.GifticonRepository;
-import com.just.birthdayFunding.domain.gifticon.entity.Gifticon;
+import com.just.birthdayFunding.domain.gifticon.GifticonRepository;
+import com.just.birthdayFunding.domain.gifticon.Gifticon;
 import com.just.birthdayFunding.dto.shop.response.GifticonDto;
 import java.util.List;
 import java.util.stream.Collectors;

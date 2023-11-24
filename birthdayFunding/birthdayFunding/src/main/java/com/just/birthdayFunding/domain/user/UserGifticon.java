@@ -1,6 +1,5 @@
-package com.just.birthdayFunding.domain.user.entity;
+package com.just.birthdayFunding.domain.user;
 
-import com.just.birthdayFunding.domain.gifticon.entity.Gifticon;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

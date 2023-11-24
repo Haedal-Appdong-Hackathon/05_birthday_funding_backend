@@ -1,4 +1,4 @@
-package com.just.birthdayFunding.domain.gifticon.entity;
+package com.just.birthdayFunding.domain.gifticon;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;

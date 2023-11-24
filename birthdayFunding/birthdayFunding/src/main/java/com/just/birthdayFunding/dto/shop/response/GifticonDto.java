@@ -1,7 +1,7 @@
 package com.just.birthdayFunding.dto.shop.response;
 
-import com.just.birthdayFunding.domain.gifticon.entity.Gifticon;
-import com.just.birthdayFunding.domain.gifticon.entity.GifticonCategory;
+import com.just.birthdayFunding.domain.gifticon.Gifticon;
+import com.just.birthdayFunding.domain.gifticon.GifticonCategory;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

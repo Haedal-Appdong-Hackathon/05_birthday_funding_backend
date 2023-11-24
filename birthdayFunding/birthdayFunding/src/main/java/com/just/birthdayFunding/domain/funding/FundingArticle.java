@@ -1,7 +1,7 @@
-package com.just.birthdayFunding.domain.funding.entity;
+package com.just.birthdayFunding.domain.funding;
 
 import com.just.birthdayFunding.domain.common.BaseTimeEntity;
-import com.just.birthdayFunding.domain.user.entity.User;
+import com.just.birthdayFunding.domain.user.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 

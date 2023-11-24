@@ -1,4 +1,4 @@
-package com.just.birthdayFunding.domain.user.entity;
+package com.just.birthdayFunding.domain.user;
 
 import com.just.birthdayFunding.domain.common.BaseTimeEntity;
 import jakarta.persistence.*;

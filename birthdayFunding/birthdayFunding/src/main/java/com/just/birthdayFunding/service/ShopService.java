@@ -1,9 +1,9 @@
 package com.just.birthdayFunding.service;
 
-import com.just.birthdayFunding.domain.gifticon.dao.GifticonRepository;
-import com.just.birthdayFunding.domain.gifticon.entity.Gifticon;
-import com.just.birthdayFunding.domain.user.dao.UserRepository;
-import com.just.birthdayFunding.domain.user.entity.User;
+import com.just.birthdayFunding.domain.gifticon.GifticonRepository;
+import com.just.birthdayFunding.domain.gifticon.Gifticon;
+import com.just.birthdayFunding.domain.user.UserRepository;
+import com.just.birthdayFunding.domain.user.User;
 import com.just.birthdayFunding.dto.common.response.PagingResponse;
 import com.just.birthdayFunding.dto.shop.response.BuyGifticonResponse;
 import com.just.birthdayFunding.dto.shop.response.GifticonDto;

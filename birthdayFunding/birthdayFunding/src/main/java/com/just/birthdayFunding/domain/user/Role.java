@@ -1,4 +1,4 @@
-package com.just.birthdayFunding.domain.user.entity;
+package com.just.birthdayFunding.domain.user;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
