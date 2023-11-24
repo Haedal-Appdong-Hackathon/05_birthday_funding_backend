@@ -8,6 +8,7 @@ import lombok.Setter;
 
 @Entity
 @Data
+@Table(name = "article_gifticon")
 public class ArticleGifticon {
 
     @Id
