@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "gifticon")
 public class Gifticon {
     @Id
     @Column(name = "gifticon_id")

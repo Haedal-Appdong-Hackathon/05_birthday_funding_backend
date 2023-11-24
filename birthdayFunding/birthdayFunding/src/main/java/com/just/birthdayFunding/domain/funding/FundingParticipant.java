@@ -23,7 +23,7 @@ public class FundingParticipant extends BaseTimeEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "funding_participant",fetch = FetchType.LAZY)
+    @OneToMany()
     private List<Gifticon> gifticonList = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
