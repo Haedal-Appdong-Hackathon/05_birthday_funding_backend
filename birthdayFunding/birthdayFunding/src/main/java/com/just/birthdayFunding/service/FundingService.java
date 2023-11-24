@@ -14,7 +14,9 @@ import com.just.birthdayFunding.dto.funding.request.CreateFundingRequest;
 import com.just.birthdayFunding.dto.funding.request.JoinFundingRequest;
 import com.just.birthdayFunding.dto.funding.request.UpdateFundingRequest;
 import com.just.birthdayFunding.dto.funding.response.CloseFundingResponse;
+import com.just.birthdayFunding.dto.funding.response.FundingDetailResponse;
 import com.just.birthdayFunding.dto.funding.response.FundingSummaryDto;
+import com.just.birthdayFunding.dto.shop.response.GifticonDto;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -147,5 +149,20 @@ public class FundingService {
 //        List<FundingParticipant> fundingParticipantList = artcle.getFundingParticipantList();
 //        List<ArticleGifticon> articleGifticonList = artcle.getArticleGifticonList();
         return null;
+    }
+
+    public FundingDetailResponse getFundingDetail(Long fid, Long userId) {
+        User user = userRepository.findById(userId).orElseThrow(
+                () -> new IllegalArgumentException("존재하지 않는 유저입니다.")
+        );
+        FundingArticle fundingArticle = fundingArticleRepostiory.findById(fid).orElseThrow(
+                () -> new IllegalArgumentException("존재하지 않는 펀딩입니다.")
+        );
+        List<GifticonDto> wishList = fundingArticle.getArticleGifticonList().stream().map(articleGifticon -> {
+            Gifticon gifticon = articleGifticon.getGifticon();
+            return GifticonDto.fromEntity(gifticon);
+        }).toList();
+
+        return FundingDetailResponse.fromEntity(fundingArticle, user, wishList);
     }
 }

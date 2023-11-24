@@ -1,5 +1,8 @@
 package com.just.birthdayFunding.dto.funding.response;
 
+import com.just.birthdayFunding.domain.funding.FundingArticle;
+import com.just.birthdayFunding.domain.gifticon.Gifticon;
+import com.just.birthdayFunding.domain.user.User;
 import com.just.birthdayFunding.dto.shop.response.GifticonDto;
 import com.just.birthdayFunding.dto.user.response.UserSummaryDto;
 import lombok.Builder;
@@ -16,10 +19,31 @@ public class FundingDetailResponse {
     private String title;
     private LocalDate startDate;
     private LocalDate endDate;
-    private Long progress;
+    private Double progress;
     private UserSummaryDto writer;
 
     private String content;
-    private Long currentMoney;
+    private Integer currentMoney;
     private List<GifticonDto> wishList;
+
+    public static FundingDetailResponse fromEntity(FundingArticle article, User writer, List<GifticonDto> wishList) {
+        UserSummaryDto userSummaryDto = UserSummaryDto.fromEntity(writer);
+        int hope = article.getArticleGifticonList()
+                .stream().mapToInt(articleGifticon -> articleGifticon.getGifticon().getPrice()).sum();
+        int current = article.getFundingParticipantList().stream().mapToInt(e->{
+            return e.getGifticonList().stream().mapToInt(Gifticon::getPrice).sum();
+        }).sum();
+        Double progress = (double)current/hope;
+        return FundingDetailResponse.builder()
+                .id(article.getId())
+                .title(article.getTitle())
+                .startDate(article.getStartDate())
+                .endDate(article.getFinishDate())
+                .progress(progress)
+                .writer(userSummaryDto)
+                .content(article.getContent())
+                .currentMoney(current)
+                .wishList(wishList)
+                .build();
+    }
 }

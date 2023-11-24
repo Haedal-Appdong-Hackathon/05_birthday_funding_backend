@@ -7,6 +7,7 @@ import com.just.birthdayFunding.dto.funding.request.CreateFundingRequest;
 import com.just.birthdayFunding.dto.funding.request.JoinFundingRequest;
 import com.just.birthdayFunding.dto.funding.request.UpdateFundingRequest;
 import com.just.birthdayFunding.dto.funding.response.CloseFundingResponse;
+import com.just.birthdayFunding.dto.funding.response.FundingDetailResponse;
 import com.just.birthdayFunding.dto.funding.response.FundingSummaryDto;
 import com.just.birthdayFunding.service.FundingService;
 import jakarta.validation.Valid;
@@ -27,6 +28,11 @@ public class FundingController {
     @PostMapping
     public Long createFunding(@RequestBody @Valid CreateFundingRequest dto, @TokenUserId Long userId) {
         return fundingService.createFunding(dto, userId);
+    }
+
+    @GetMapping("/{fid}")
+    public FundingDetailResponse getFundingDetail(@PathVariable Long fid, @TokenUserId Long userId) {
+        return fundingService.getFundingDetail(fid, userId);
     }
 
     @PutMapping("/{fid}")
