@@ -5,5 +5,5 @@ import lombok.Getter;
 @Getter
 public enum GifticonCategory {
     CAFE,
-    CHICKEN,
+    CHICKEN;
 }
