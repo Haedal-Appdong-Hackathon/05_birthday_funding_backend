@@ -6,9 +6,12 @@ import jakarta.persistence.*;
 import lombok.Getter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
+@Table(name = "funding_article")
 public class FundingArticle extends BaseTimeEntity {
     @Id
     @Column(name = "funding_article_id")
@@ -26,5 +29,13 @@ public class FundingArticle extends BaseTimeEntity {
     private LocalDate startDate;
 
     private LocalDate finishDate;
+
+
+    @OneToMany(mappedBy = "funding_article",fetch = FetchType.LAZY)
+    private List<ArticleGifticon> articleGifticonList = new ArrayList<>();
+
+
+    @OneToMany(mappedBy = "funding_article",fetch = FetchType.LAZY)
+    private List<FundingParticipant> fundingParticipantList = new ArrayList<>();
 
 }
