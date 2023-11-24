@@ -25,4 +25,13 @@ public class GifticonDto {
                 .category(category)
                 .build();
     }
+    public static GifticonDto fromEntity(Gifticon gifticon) {
+        return GifticonDto.builder()
+                .name(gifticon.getName())
+                .brand(gifticon.getBrand())
+                .imageUrl(gifticon.getImageUrl())
+                .price(gifticon.getPrice())
+                .category(gifticon.getCategory())
+                .build();
+    }
 }
