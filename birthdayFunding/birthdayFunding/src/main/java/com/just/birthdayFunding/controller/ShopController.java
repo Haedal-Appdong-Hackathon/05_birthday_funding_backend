@@ -1,6 +1,7 @@
 package com.just.birthdayFunding.controller;
 
 import com.just.birthdayFunding.core.anotation.TokenUserId;
+import com.just.birthdayFunding.domain.gifticon.GifticonCategory;
 import com.just.birthdayFunding.dto.common.response.PagingResponse;
 import com.just.birthdayFunding.dto.shop.response.BuyGifticonResponse;
 import com.just.birthdayFunding.dto.shop.response.GifticonDto;
@@ -15,7 +16,7 @@ public class ShopController {
     private final ShopService shopService;
 
     @GetMapping
-    public PagingResponse<GifticonDto> getGifticonList(@RequestParam int page, @RequestParam String category) {
+    public PagingResponse<GifticonDto> getGifticonList(@RequestParam int page, @RequestParam GifticonCategory category) {
         return shopService.getGifticonList(page, category);
     }
 

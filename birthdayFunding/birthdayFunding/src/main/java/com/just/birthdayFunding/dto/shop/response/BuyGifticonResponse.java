@@ -12,7 +12,7 @@ public class BuyGifticonResponse {
     private Long id;
     private String name;
     private String brand;
-    private Long price;
+    private Integer price;
     private String imageUrl;
     private LocalDate expirationDate;
 }
