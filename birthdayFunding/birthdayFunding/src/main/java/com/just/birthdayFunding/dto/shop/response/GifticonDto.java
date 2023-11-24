@@ -5,10 +5,12 @@ import com.just.birthdayFunding.domain.gifticon.entity.GifticonCategory;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class GifticonDto {
     private GifticonCategory category;
     private String name;
