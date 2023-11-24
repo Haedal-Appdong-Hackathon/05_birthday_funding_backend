@@ -19,8 +19,8 @@ public class FundingController {
     private final FundingService fundingService;
 
     @GetMapping
-    public PagingResponse<FundingSummaryDto> getFundingList(@TokenUserId Long userId) {
-        return fundingService.getFundingList(userId);
+    public PagingResponse<FundingSummaryDto> getFundingList(@RequestParam int page, @TokenUserId Long userId) {
+        return fundingService.getFundingList(page, userId);
     }
 
     @PostMapping

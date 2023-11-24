@@ -8,7 +8,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-@Component(value = "makeUser")
+import java.time.LocalDate;
+
+//@Component(value = "makeUser")
 @RequiredArgsConstructor
 @Slf4j
 public class MakeUser {
@@ -24,6 +26,7 @@ public class MakeUser {
                 .nickname("best")
                 .imagePath("https://picsum.photos/200/200")
                 .build();
+        user1.setBirthdate(LocalDate.of(1999, 1, 1));
         userRepository.save(user1);
     }
 }

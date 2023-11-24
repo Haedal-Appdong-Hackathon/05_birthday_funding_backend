@@ -2,13 +2,12 @@ package com.just.birthdayFunding.domain.funding;
 
 import com.just.birthdayFunding.domain.gifticon.Gifticon;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Data
 @Table(name = "article_gifticon")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ArticleGifticon {
 
     @Id
@@ -25,8 +24,10 @@ public class ArticleGifticon {
     private Gifticon gifticon;
 
 
-    public void setFundingArticle(FundingArticle fundingArticle){
-        this.fundingArticle = fundingArticle;
-        fundingArticle.getArticleGifticonList().add(this);
+    @Builder
+    public ArticleGifticon(Gifticon gifticon){
+        this.gifticon = gifticon;
     }
+
+
 }
