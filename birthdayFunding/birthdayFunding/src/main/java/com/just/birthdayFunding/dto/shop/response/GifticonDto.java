@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GifticonDto {
+    private Long id;
     private GifticonCategory category;
     private String name;
     private Integer price;
@@ -29,6 +30,7 @@ public class GifticonDto {
     }
     public static GifticonDto fromEntity(Gifticon gifticon) {
         return GifticonDto.builder()
+                .id(gifticon.getId())
                 .name(gifticon.getName())
                 .brand(gifticon.getBrand())
                 .imageUrl(gifticon.getImageUrl())
