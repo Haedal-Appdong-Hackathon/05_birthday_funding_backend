@@ -58,6 +58,12 @@
 <br>
 <br>
 
+api 명세서
+<img width="1004" alt="api 명세서" src="https://github.com/Haedal-Appdong-Hackathon/05_birthday_funding_backend/assets/78216059/ea3389e3-a456-4f8d-82d4-a307e456c5e1">
+
+erd다이어그램
+![erd다이어그램](https://github.com/Haedal-Appdong-Hackathon/05_birthday_funding_backend/assets/78216059/99d66f5d-ce06-4b52-9319-d738d7190b24)
+
 ## 개발기간
 - 1차 : 2023.11.23 ~ 2023.11.25
 
