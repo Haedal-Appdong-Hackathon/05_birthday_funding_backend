@@ -21,9 +21,9 @@ public class TokenUserIdResolver implements HandlerMethodArgumentResolver {
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
                                   NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
-        String authorization = webRequest.getHeader("Authorization");
-        String token = authorization.substring(7);
+//        String authorization = webRequest.getHeader("Authorization");
+//        String token = authorization.substring(7);
         //TODO
-        return null;
+        return 1L;
     }
 }
