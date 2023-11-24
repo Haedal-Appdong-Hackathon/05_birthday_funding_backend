@@ -22,7 +22,7 @@ public class UserGifticonDto {
     public static UserGifticonDto from(UserGifticon userGifticon) {
         return UserGifticonDto.builder()
                 .id(userGifticon.getId())
-                .name(userGifticon.getUser().getName())
+                .name(userGifticon.getGifticon().getName())
                 .price(userGifticon.getGifticon().getPrice())
                 .imgUrl(userGifticon.getGifticon().getImageUrl())
                 .brand(userGifticon.getGifticon().getBrand())
