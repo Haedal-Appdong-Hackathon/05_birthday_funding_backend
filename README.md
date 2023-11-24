@@ -58,6 +58,10 @@
 <br>
 <br>
 
+
+![image](https://github.com/Haedal-Appdong-Hackathon/05_birthday_funding_backend/assets/112597963/6e2f4754-5a29-4f3c-9478-0243933cf7c8)
+
+
 api 명세서
 <img width="1004" alt="api 명세서" src="https://github.com/Haedal-Appdong-Hackathon/05_birthday_funding_backend/assets/78216059/ea3389e3-a456-4f8d-82d4-a307e456c5e1">
 
