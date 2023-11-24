@@ -23,12 +23,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     private final UserService userService;
 
-    @GetMapping("/")
+    @GetMapping
     public UserInfoResponse getUserInfo(@TokenUserId Long userId) {
         return userService.getUserInfoById(userId);
     }
 
-    @PatchMapping("/")
+    @PatchMapping
     public UserInfoResponse updateUserInfo(@RequestBody UserInfoResponse userInfoResponse, @TokenUserId Long userId) {
         return userService.updateUserInfo(userInfoResponse.getNickname(), userId);
     }
