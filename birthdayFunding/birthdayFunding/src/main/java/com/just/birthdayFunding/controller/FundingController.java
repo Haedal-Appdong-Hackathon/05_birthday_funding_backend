@@ -19,28 +19,28 @@ public class FundingController {
     private final FundingService fundingService;
 
     @GetMapping
-    public PagingResponse<FundingSummaryDto> getFundingList() {
-        return null;
+    public PagingResponse<FundingSummaryDto> getFundingList(@TokenUserId Long userId) {
+        return fundingService.getFundingList(userId);
     }
 
     @PostMapping
     public Long createFunding(@RequestBody @Valid CreateFundingRequest dto, @TokenUserId Long userId) {
-        return null;
+        return fundingService.createFunding(dto, userId);
     }
 
     @PutMapping("/{fid}")
     public void updateFunding(@PathVariable Long fid, @RequestBody UpdateFundingRequest dto, @TokenUserId Long userId) {
-
+        fundingService.updateFunding(fid, dto, userId);
     }
 
     @PostMapping("/{fid}/join")
     public void joinFunding(@PathVariable Long fid, @TokenUserId Long userId) {
-
+        fundingService.joinFunding(fid, userId);
     }
 
     @PostMapping("/{fid}/close")
     public CloseFundingResponse closeFunding(@PathVariable Long fid, @RequestBody @Valid CloseFundingRequest dto, @TokenUserId Long userId) {
-        return null;
+        return fundingService.closeFunding(fid, dto, userId);
     }
 
 
