@@ -1,7 +1,7 @@
 package com.just.birthdayFunding.controller;
 
-import com.just.birthdayFunding.domain.dao.UserRepository;
-import com.just.birthdayFunding.domain.entity.User;
+import com.just.birthdayFunding.domain.user.dao.UserRepository;
+import com.just.birthdayFunding.domain.user.entity.User;
 import com.just.birthdayFunding.dto.LoginResponse;
 import com.just.birthdayFunding.service.KakaoLoginService;
 import java.util.HashMap;
